@@ -9,6 +9,8 @@ server.register(cors, {
     origin: "*",
 })
 
+const PORT = process.env.PORT
+
 server.get("/teams", async (request, response) => {
     response.type("application/json").code(200)
     return { teams }
@@ -36,6 +38,6 @@ server.get<{ Params: DriverParams }> ('/drivers/:id', async (request, response) 
         }
     })
 
-server.listen({ port: 3333 }, () => {
-    console.log("Servidor rodando na porta 3333")
+server.listen({ port: Number(PORT) }, () => {
+    console.log(`Servidor rodando na porta ${PORT}`)
 })
